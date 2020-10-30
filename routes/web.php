@@ -27,4 +27,4 @@ Route::get('/', function() {
   }
 });
 
-Route::get('/{photographerSlug}', 'SiteController@getPhotographer');
+Route::get('/{photographerSlug}', 'SiteController@getPhotographerPage');
