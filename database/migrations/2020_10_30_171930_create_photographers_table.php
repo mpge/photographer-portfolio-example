@@ -16,6 +16,18 @@ class CreatePhotographersTable extends Migration
         Schema::create('photographers', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('author_slug');
+          
+            $table->string('author_name')->nullable();
+            $table->string('author_phone')->nullable();
+            $table->string('author_email')->nullable();
+            $table->text('author_bio')->nullable();
+            $table->text('author_profile_picture_url')->nullable();
+          
+            $table->string('author_sm_twitter')->nullable();
+            $table->string('author_sm_instagram')->nullable();
+            $table->string('author_sm_facebook')->nullable();
+            $table->string('author_sm_behance')->nullable();
         });
     }
 
