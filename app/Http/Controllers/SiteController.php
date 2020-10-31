@@ -10,6 +10,6 @@ use App\Models\Photographer as SitePhotographer;
 class SiteController extends Controller
 {
   public function getPhotographerPage(Request $request) {
-    return view('photographer');
+    return view('pages.photographer');
   }
 }

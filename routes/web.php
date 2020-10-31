@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+/* Controllers */
+use App\Http\Controllers\SiteController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,4 +30,4 @@ Route::get('/', function() {
   }
 });
 
-Route::get('/{photographerSlug}', 'SiteController@getPhotographerPage');
+Route::get('/{photographerSlug}', [SiteController::class, 'getPhotographerPage']);
