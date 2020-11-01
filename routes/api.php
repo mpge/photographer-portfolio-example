@@ -20,4 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('photographer/landscapes', [APIController::class, 'getPhotographerLandscapes']);
+Route::get('photographer/landscapes/{photographerSlug}', [APIController::class, 'getPhotographerLandscapes']);

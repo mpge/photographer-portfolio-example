@@ -1,1 +1,1 @@
-require('./bootstrap');
+require('./photographer-portfolio');
