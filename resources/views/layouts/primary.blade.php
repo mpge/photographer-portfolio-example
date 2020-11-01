@@ -11,6 +11,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <body>
+    <div class="randomBackground"><div class="innerRandomBackground"></div></div>
+    
     <div id="pageContainer" class="photographer-portfolio-page {{ isset($pageClass) ? $pageClass : '' }}">
       @yield('content')
     </div>

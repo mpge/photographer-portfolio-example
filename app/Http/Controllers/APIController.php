@@ -11,6 +11,36 @@ use App\Models\Photo as SitePhoto;
 
 class APIController extends Controller
 {
+  public function getPhotographerRandomLandscape(Request $request, $photographerSlug) {
+    // Default response:
+    $responseJson = array(
+      'status' => 0,
+      'random_landscape_url' => false,
+    );
+    
+    if($photographerSlug != '' && $photographerSlug != null && $photographerSlug != false) {
+      $photographer = SitePhotographer::where('author_slug', $photographerSlug)->first();
+     
+      if($photographer != false) {
+        // Get the random landscape photo.
+        $randomLandscape = $photographer->galleries()->inRandomOrder()->first();
+        
+        if($randomLandscape != false) {
+          $randomPhoto = $randomLandscape->photos()->where('is_gallery_display_img', true)->where('photo_url', '!=', null)->first();
+          
+          if($randomPhoto != false) {
+            $responseJson['status'] = 1; // success
+            $responseJson['random_landscape_url'] = $randomPhoto->photo_url;
+          }
+        }
+      } else {
+        $responseJson['status'] = 0;
+      }
+    }
+    
+    return response()->json($responseJson);
+  }
+  
   public function getPhotographerLandscapes(Request $request, $photographerSlug = false) {
     // Default response:
     $responseJson = array(

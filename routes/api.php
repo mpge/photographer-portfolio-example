@@ -20,4 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('photographer/landscapes/{photographerSlug}', [APIController::class, 'getPhotographerLandscapes']);
+// Get all landscapes for a specific photographer/author
+Route::get('photographer/{photographerSlug}/landscapes', [APIController::class, 'getPhotographerLandscapes']);
+
+Route::get('photographer/{photographerSlug}/random-landscape', [APIController::class, 'getPhotographerRandomLandscape']);

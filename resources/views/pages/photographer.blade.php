@@ -5,7 +5,7 @@
     <div class="pure-g photographer-bio-section">
       <div class="pure-u-2-3">
         <div class="photographer-bio-photo">
-          <img src="" />
+          <img src="" class="pure-img" />
         </div>
 
         <div class="photographer-bio-info">
@@ -49,6 +49,11 @@
     
     <div class="pure-g photographer-album-section">
       <!-- autofilled -->
+      <div class="pure-u-1-1">
+        <div class="photographer-album-rows">
+          
+        </div>
+      </div>
     </div>
   </div>
 @endsection

@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+body .randomBackground {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -9999;
+  background-color: #000;
+}
+body .randomBackground .innerRandomBackground {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  overflow: hidden;
+  -moz-filter: blur(15px);
+  -o-filter: blur(15px);
+  -ms-filter: blur(15px);
+  filter: blur(15px);
+  transform: scale(1.2, 1.2);
+}
+#pageContainer.photographer-portfolio-page {
+  display: block;
+  max-width: 1300px;
+  margin: auto;
+}
+#pageContainer.photographer-portfolio-page .pure-g.photographer-bio-section {
+  width: 100%;
+  background: #FFF;
+  color: #000;
+}
+#pageContainer.photographer-portfolio-page .pure-g.photographer-bio-section .photographer-bio-photo {
+  height: 300px;
+  width: 300px;
+}
+#pageContainer.photographer-portfolio-page .pure-g.photographer-bio-section .photographer-bio-photo img {
+  height: 100%;
+  width: 100%;
+}
