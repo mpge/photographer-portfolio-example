@@ -207,7 +207,14 @@ window.photographerPortfolio = {
             var galleryRowDescriptionBoxLeftContainer = $('<div>').addClass('gallery-album-element-description-box-left-container');
             var galleryRowDescriptionBoxRightContainer = $('<div>').addClass('gallery-album-element-description-box-right-container');
             var galleryRowDescriptionBoxDate = $('<div>').addClass('gallery-album-element-description-box-date').html(photographerData.photographer_info.album[galleryRow].date);
+            var galleryRowDescriptionBoxFeaturedHeart = $('<i>').addClass('fa').addClass('fa-heart').addClass('is-featured-heart');
+
+            if (photographerData.photographer_info.album[galleryRow].featured == true) {
+              galleryRowDescriptionBoxFeaturedHeart.addClass('heart-active');
+            }
+
             galleryRowDescriptionBoxRightContainer.append(galleryRowDescriptionBoxDate);
+            galleryRowDescriptionBoxLeftContainer.append(galleryRowDescriptionBoxFeaturedHeart);
             galleryRowDescriptionSubbox.append(galleryRowDescriptionBoxLeftContainer).append(galleryRowDescriptionBoxRightContainer);
             galleryRowDescriptionBoxElement.append(galleryRowDescriptionBoxDescription).append(galleryRowDescriptionSubbox);
             galleryRowElement.append(galleryRowPictureElement).append(galleryRowDescriptionBoxElement);
