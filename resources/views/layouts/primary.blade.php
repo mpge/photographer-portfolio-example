@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title></title>
+    <title>Photography Portfolio</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Primary CSS -->
     <link href="/css/app.css" type="text/css" rel="stylesheet" />

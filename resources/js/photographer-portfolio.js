@@ -74,12 +74,16 @@ window.photographerPortfolio = {
       if(typeof photographerData.photographer_info.bio != 'undefined')
         photographerContainer.find('.photographer-bio-description-content').html(photographerData.photographer_info.bio);
       
-      if(typeof photographerData.photographer_info.email != 'undefined')
-        photographerContainer.find('.photographer-bio-field.photographer-bio-field-email .photographer-bio-field-email-value').html(photographerData.photographer_info.email);
-      
-      if(typeof photographerData.photographer_info.phone != 'undefined')
-        photographerContainer.find('.photographer-bio-field.photographer-bio-field-phone .photographer-bio-field-phone-value').html(photographerData.photographer_info.phone);
-      
+      if(typeof photographerData.photographer_info.email != 'undefined') {
+        var photographerDataEmailLink = $('<a>').attr('href', 'mailto:' + photographerData.photographer_info.email).html(photographerData.photographer_info.email);
+        photographerContainer.find('.photographer-bio-field.photographer-bio-field-email .photographer-bio-field-email-value').append(photographerDataEmailLink);
+      }
+        
+      if(typeof photographerData.photographer_info.phone != 'undefined') {
+        var photographerDataPhoneLink = $('<a>').attr('href', 'tel:' + photographerData.photographer_info.phone).html(photographerData.photographer_info.phone);
+        photographerContainer.find('.photographer-bio-field.photographer-bio-field-phone .photographer-bio-field-phone-value').append(photographerDataPhoneLink);
+      }
+        
       // Load album
       if(typeof photographerData.photographer_info.album != 'undefined' && photographerData.photographer_info.album.length > 0) {
         var photographerAlbumRowsContainer = $('.photographer-album-section .photographer-album-rows');
@@ -97,7 +101,8 @@ window.photographerPortfolio = {
             }
             
             // Create the u1-3
-            var galleryRowElement = $('<div>').addClass('pure-u-1-3').addClass('gallery-album-element');
+            var galleryRowHolder = $('<div>').addClass('pure-u-1-3');
+            var galleryRowElement = $('<div>').addClass('gallery-album-element');
             var galleryRowPictureElement = $('<div>').addClass('gallery-album-element-picture').css({'background-image': 'url("' + photographerData.photographer_info.album[galleryRow].img + '")'});
             var galleryRowPictureElementTitle = $('<div>').addClass('gallery-album-element-picture-title').html(photographerData.photographer_info.album[galleryRow].title);
             
@@ -120,7 +125,9 @@ window.photographerPortfolio = {
             
             galleryRowElement.append(galleryRowPictureElement).append(galleryRowDescriptionBoxElement);
             
-            currentGalleryRow.append(galleryRowElement);
+            galleryRowHolder.append(galleryRowElement);
+            
+            currentGalleryRow.append(galleryRowHolder);
             
             if(galleryRowCounter == 3) {
               // Add to dom.

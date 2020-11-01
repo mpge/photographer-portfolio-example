@@ -4,19 +4,21 @@
   <div class="photographer-info" data-photographer-slug="{{ isset($photographerSlug) ? $photographerSlug : '' }}">
     <div class="pure-g photographer-bio-section">
       <div class="pure-u-2-3">
-        <div class="photographer-bio-photo">
-          <img src="" class="pure-img" />
-        </div>
+        <div class="pure-g">
+          <div class="photographer-bio-photo pure-u-1-3">
+            <img src="" class="pure-img" />
+          </div>
 
-        <div class="photographer-bio-info">
-          <div class="photographer-bio-title-name"></div>
-          <div class="photographer-bio-description">
-            <div class="photographer-bio-description-title">
-              Bio
-            </div>
+          <div class="photographer-bio-info pure-u-2-3">
+            <div class="photographer-bio-title-name"></div>
+            <div class="photographer-bio-description">
+              <div class="photographer-bio-description-title">
+                Bio
+              </div>
 
-            <div class="photographer-bio-description-content">
+              <div class="photographer-bio-description-content">
 
+              </div>
             </div>
           </div>
         </div>
