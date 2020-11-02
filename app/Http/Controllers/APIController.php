@@ -23,7 +23,7 @@ class APIController extends Controller
      
       if($photographer != false) {
         // Get the random landscape photo.
-        $randomLandscape = $photographer->galleries()->inRandomOrder()->first();
+        $randomLandscape = $photographer->galleries()->where('is_enabled', true)->inRandomOrder()->first();
         
         if($randomLandscape != false) {
           $randomPhoto = $randomLandscape->photos()->where('is_gallery_display_img', true)->where('photo_url', '!=', null)->first();

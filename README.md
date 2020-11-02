@@ -1,61 +1,38 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+## Photography Portfolio Example
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+### Development Process
 
-## About Laravel
+I took a very scalable approach with regards to development. You'll notice that the base URL will redirect to /me. This is done so that the website does support the additional of multiple photographers if the website owner so choses to continue to add photographers. As such, the /me is a slug which then points to a set of galleries/albums and photos.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+I leveraged Laravel MIX with LESS to generate clean CSS for use on the frontend.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+I did debate leveraging a frontend framework like Angular or Ember. However, I thought it would be "overkill" for this project considering, at this point, it's only 1 page. I instead resorted to building a clean Javascript library to operate the site.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+I leveraged migrations for database creation. You'll notice a migration which removes a column. I had basically discovered, through developing, that I could set the "display image" boolean on the photo instead of defining this statically within the galleries table (creating a column with a path). I felt this made more sense since it would be easier for record keeping, and could even go further to allow for multiple "featured" images (potentially a future feature).
+I think it's extremely important for developers to constantly be re-evaluating elements like database schemas to ensure they are taking the best possible approach with scalability, data integrity and future development ease in mind. 
 
-## Learning Laravel
+For additional features, I did leverage FontAwesome for the social media icons that I placed into the bio of the photographer. I thought this was an essential feature and FontAwesome provided a really easy way of implementing this along with the heart icon for featured albums/galleries.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+With regards to libaries, I used jQuery to speed up development time. I also used PureCSS to speed up the creation of the HTML / responsiveness / grids.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Difficulties
 
-## Laravel Sponsors
+The primary difficulty I had was in deciding the specific approach with regards to the data structure and actually importing the data. Because this is such a small site, I didn't see a purpose in wasting valuable development time which could be placed on other features in creating a "automatic" script to import galleries and photos from the original JSON.
+While I am a fan of automation and always agree it should be taken into consideration, there is such thing as over-automation, and I felt for the 6 galleries it just made more sense to simply import the data manually. 
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+If the site had far more than 6 galleries, or if there was the intention to add more in the future, I think a script would have been feasable / important.
 
-### Premium Partners
+This also goes into respect with regards to lazy loading. If there were more than 10 galleries, I would've implemented a pagination/lazy loading system so that not all galleries are loaded at once. This reduces load on the server and would make more sense for a larger portfolio.
+Due to the amount of galleries only being 6, and the specific ask to have the output match the original JSON, I didn't believe this made sense to implement.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+I did make one small modification to the output of the API. I did add a "status" boolean to the output of the API. I felt this was neccessary, especially when developing with a multi-photographer setup/scalability like I did. If an incorrect slug was provided, an error code would be helpful in decifering bugs.
 
-## Contributing
+Also, while I would've preferred to leverage multiple API requests in a true RestFUL fashion (seperate endpoints for photographer, gallery, photos, etc), I do believe it may have been overkill for a simple site and it would not have matched the original JSON as per request.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+If the photographers information didn't have to be pulled from AJAX, I would've instead used Laravel Blade and placed it directly into the HTML, leaving the galleries/photos to be pulled through the API/Ajax. I feel as if this makes more sense for loading the site, SEO, and just general ease of access to the information from any of the pages.
 
-## Code of Conduct
+### Thanks!
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Thanks for taking this project into consideration. It was definitely a fun project to create!
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+If this was a production site, there is definitely more room for growth, and I believe I setup the project up in a scalable manner so as to make this as easy as possible.

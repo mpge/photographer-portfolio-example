@@ -1,6 +1,6 @@
 #pageContainer.photographer-portfolio-page {
   display: block;
-  max-width: 1050px;
+  max-width: 950px;
   margin: auto;
   
   .pure-g.photographer-bio-section {
@@ -59,11 +59,34 @@
         color: #999;
         padding: 0.1em 0;
       }
+      
+      .photographer-bio-sm-links {
+        ul {
+          padding: 0;
+        }
+        
+        ul, li {
+          list-style: none;
+          display: none;
+          
+          a:link, a:visited {
+            color: #000;
+            font-size: 1.5em;
+          }
+        }
+        
+        li.active {
+          text-align: left;
+          display: inline-block;
+          padding: 0 0.1em;
+        }
+      }
     }
   }
   
   .photographer-album-section {
     display: block;
+    padding-bottom: 1em;
     
     .photographer-album-rows {
       margin: auto;

@@ -19,6 +19,31 @@
               <div class="photographer-bio-description-content">
 
               </div>
+              
+              <div class="photographer-bio-sm-links">
+                <ul>
+                  <li class="sm-facebook">
+                    <a href="#">
+                      <i class="fab fa-facebook"></i>
+                    </a>
+                  </li>
+                  <li class="sm-twitter">
+                    <a href="#">
+                      <i class="fab fa-twitter"></i>
+                    </a>
+                  </li>
+                  <li class="sm-instagram">
+                    <a href="#">
+                      <i class="fab fa-instagram"></i>
+                    </a>
+                  </li>
+                  <li class="sm-behance">
+                    <a href="#">
+                      <i class="fab fa-behance"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>

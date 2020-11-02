@@ -83,6 +83,28 @@ window.photographerPortfolio = {
         var photographerDataPhoneLink = $('<a>').attr('href', 'tel:' + photographerData.photographer_info.phone).html(photographerData.photographer_info.phone);
         photographerContainer.find('.photographer-bio-field.photographer-bio-field-phone .photographer-bio-field-phone-value').append(photographerDataPhoneLink);
       }
+      
+      // Social media links.
+      if(typeof photographerData.photographer_info.sm_facebook != 'undefined') {
+        photographerContainer.find('.photographer-bio-sm-links ul').show(); // will show if atleast 1
+        photographerContainer.find('.photographer-bio-sm-links .sm-facebook').addClass('active');
+        photographerContainer.find('.photographer-bio-sm-links .sm-facebook a:link').attr('href', photographerData.photographer_info.sm_facebook);
+      }
+      if(typeof photographerData.photographer_info.sm_instagram != 'undefined') {
+        photographerContainer.find('.photographer-bio-sm-links ul').show(); // will show if atleast 1
+        photographerContainer.find('.photographer-bio-sm-links .sm-instagram').addClass('active');
+        photographerContainer.find('.photographer-bio-sm-links .sm-instagram a:link').attr('href', photographerData.photographer_info.sm_instagram);
+      }
+      if(typeof photographerData.photographer_info.sm_twitter != 'undefined') {
+        photographerContainer.find('.photographer-bio-sm-links ul').show(); // will show if atleast 1
+        photographerContainer.find('.photographer-bio-sm-links .sm-twitter').addClass('active');
+        photographerContainer.find('.photographer-bio-sm-links .sm-twitter a:link').attr('href', photographerData.photographer_info.sm_twitter);
+      }
+      if(typeof photographerData.photographer_info.sm_behance != 'undefined') {
+        photographerContainer.find('.photographer-bio-sm-links ul').show(); // will show if atleast 1
+        photographerContainer.find('.photographer-bio-sm-links .sm-behance').addClass('active');
+        photographerContainer.find('.photographer-bio-sm-links .sm-behance a:link').attr('href', photographerData.photographer_info.sm_behance);
+      }
         
       // Load album
       if(typeof photographerData.photographer_info.album != 'undefined' && photographerData.photographer_info.album.length > 0) {
@@ -90,27 +112,32 @@ window.photographerPortfolio = {
         // Loop through, creating the rows.
         
         var galleryRowCounter=0;
+        var totalCounter=0;
         var currentGalleryRow=false;
         for(var galleryRow in photographerData.photographer_info.album) {
           if(photographerData.photographer_info.album.hasOwnProperty(galleryRow)) {
             galleryRowCounter++;
             
+            // If on first element, create the row.
             if(galleryRowCounter == 1) {
               // On first, create the row.
               currentGalleryRow = $('<div>').addClass('pure-g');
             }
             
-            // Create the u1-3
+            // Create the holder for all elements (1-3)
             var galleryRowHolder = $('<div>').addClass('pure-u-1-3');
             var galleryRowElement = $('<div>').addClass('gallery-album-element');
             var galleryRowPictureElement = $('<div>').addClass('gallery-album-element-picture').css({'background-image': 'url("' + photographerData.photographer_info.album[galleryRow].img + '")'});
             var galleryRowPictureElementTitle = $('<div>').addClass('gallery-album-element-picture-title').html(photographerData.photographer_info.album[galleryRow].title);
             
+            // Add the title to the picture element.
             galleryRowPictureElement.append(galleryRowPictureElementTitle);
             
+            // Add the secondary part (which holds description)
             var galleryRowDescriptionBoxElement = $('<div>').addClass('gallery-album-element-description-box');
             var galleryRowDescriptionBoxDescription = $('<div>').addClass('gallery-album-element-description-box-description').html(photographerData.photographer_info.album[galleryRow].description);
             
+            // Add subbox, which holds additional meta information
             var galleryRowDescriptionSubbox = $('<div>').addClass('gallery-album-element-description-box-subinfo');
             var galleryRowDescriptionBoxLeftContainer = $('<div>').addClass('gallery-album-element-description-box-left-container');
             var galleryRowDescriptionBoxRightContainer = $('<div>').addClass('gallery-album-element-description-box-right-container');
@@ -118,10 +145,12 @@ window.photographerPortfolio = {
             var galleryRowDescriptionBoxDate = $('<div>').addClass('gallery-album-element-description-box-date').html(photographerData.photographer_info.album[galleryRow].date);
             var galleryRowDescriptionBoxFeaturedHeart = $('<i>').addClass('fa').addClass('fa-heart').addClass('is-featured-heart');
             
+            // If is featured, will display a red heart in meta/sub box.
             if(photographerData.photographer_info.album[galleryRow].featured == true) {
               galleryRowDescriptionBoxFeaturedHeart.addClass('heart-active');
             }
             
+            // Append all elements final.
             galleryRowDescriptionBoxRightContainer.append(galleryRowDescriptionBoxDate);
             galleryRowDescriptionBoxLeftContainer.append(galleryRowDescriptionBoxFeaturedHeart);
             
@@ -131,16 +160,24 @@ window.photographerPortfolio = {
             
             galleryRowElement.append(galleryRowPictureElement).append(galleryRowDescriptionBoxElement);
             
+            // Add the primary element to holder and finally append to row.
             galleryRowHolder.append(galleryRowElement);
             
             currentGalleryRow.append(galleryRowHolder);
             
+            // If counter is 3, add to DOM and reset counter.
             if(galleryRowCounter == 3) {
               // Add to dom.
               photographerAlbumRowsContainer.append(currentGalleryRow);
               // and reset.
               galleryRowCounter=0;
               currentGalleryRow=false;
+            }
+            
+            // if total counter is complete, remove page load.
+            totalCounter++;
+            if(totalCounter == photographerData.photographer_info.album.length) {
+              $('html').removeClass('loading');
             }
           }
         }
