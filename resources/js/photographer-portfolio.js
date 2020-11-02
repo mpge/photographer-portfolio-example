@@ -148,6 +148,7 @@ window.photographerPortfolio = {
             // If is featured, will display a red heart in meta/sub box.
             if(photographerData.photographer_info.album[galleryRow].featured == true) {
               galleryRowDescriptionBoxFeaturedHeart.addClass('heart-active');
+              galleryRowDescriptionBoxFeaturedHeart.attr('aria-label', 'Gallery is Featured');
             }
             
             // Append all elements final.
