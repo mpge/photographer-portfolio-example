@@ -23,22 +23,22 @@
               <div class="photographer-bio-sm-links">
                 <ul>
                   <li class="sm-facebook">
-                    <a href="#">
+                    <a href="#" target="_BLANK">
                       <i class="fab fa-facebook"></i>
                     </a>
                   </li>
                   <li class="sm-twitter">
-                    <a href="#">
+                    <a href="#" target="_BLANK">
                       <i class="fab fa-twitter"></i>
                     </a>
                   </li>
                   <li class="sm-instagram">
-                    <a href="#">
+                    <a href="#" target="_BLANK">
                       <i class="fab fa-instagram"></i>
                     </a>
                   </li>
                   <li class="sm-behance">
-                    <a href="#">
+                    <a href="#" target="_BLANK">
                       <i class="fab fa-behance"></i>
                     </a>
                   </li>
