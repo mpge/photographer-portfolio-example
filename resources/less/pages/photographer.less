@@ -19,9 +19,11 @@
     }
     
     .photographer-bio-fields {
-      position: relative;
-      top: 50%;
-      transform: translateY(-50%);
+      @media screen and (min-width: 885px) {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+      }
       
       .photographer-bio-field-title {
         font-weight: 700;
