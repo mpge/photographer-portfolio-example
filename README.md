@@ -13,6 +13,8 @@ I think it's extremely important for developers to constantly be re-evaluating e
 
 For additional features, I did leverage FontAwesome for the social media icons that I placed into the bio of the photographer. I thought this was an essential feature and FontAwesome provided a really easy way of implementing this along with the heart icon for featured albums/galleries.
 
+I also had the background be a random blurred image from any of the enabled galleries, and added a "enabled" column in order to enable/disable galleries at any time.
+
 With regards to libaries, I used jQuery to speed up development time. I also used PureCSS to speed up the creation of the HTML / responsiveness / grids.
 
 ### Difficulties
